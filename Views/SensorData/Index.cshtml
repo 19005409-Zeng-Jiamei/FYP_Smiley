@@ -1,0 +1,43 @@
+﻿@model List<SensorData>
+
+@{
+    ViewBag.Title = "Sensor Data";
+}
+
+@section ScriptSection {
+    <script>
+        function ConfirmDelete() {
+            if (confirm("Are you sure you want to delete?") == false) {
+                event.preventDefault();   // not working in IE
+                event.stopPropagation();  // not working in Firefox
+                return false;             // working in IE
+            }
+        }
+
+    </script>
+}
+<h2>Sensor Data</h2>
+
+<span style="color:red">@TempData["Msg"]</span>
+<br />
+
+<a asp-action="Print" target="_blank">Print</a>
+<table class="table">
+    <tr>
+        <th>SNO</th>
+        <th>Id</th>
+        <th>Feedback</th>
+        <th>Time Stamp</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Sno</td>
+            <td>@item.SensorId</td>
+            <td>@item.FeedbackGesture</td>
+            <td>@item.TimeStamp</td>
+
+        </tr>
+    }
+</table>

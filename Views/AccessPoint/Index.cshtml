@@ -1,0 +1,53 @@
+﻿@model List<AccessPoint>
+
+@{
+    ViewBag.Title = "Access Points";
+}
+
+@section ScriptSection {
+    <script>
+        function ConfirmDelete() {
+            if (confirm("Are you sure you want to delete?") == false) {
+                event.preventDefault();   // not working in IE
+                event.stopPropagation();  // not working in Firefox
+                return false;             // working in IE
+            }
+        }
+
+    </script>
+}
+<h2>Access Points</h2>
+
+<span style="color:red">@TempData["Msg"]</span>
+<br />
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-controller="AccessPoint" asp-action="Create">Create New</a>
+    }
+    </p>
+
+<a asp-action="Print" target="_blank">Print</a>
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Facility Id</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AccessPointId</td>
+            <td>@item.FacilityId</td>
+            <td>@item.Description</td>
+
+            <td>
+                <a asp-action="Update" asp-route-id="@item.AccessPointId">Update | </a>
+                <a asp-action="Delete" asp-route-id="@item.AccessPointId" onclick="return ConfirmDelete()">Delete | </a>
+                <a asp-action="Print" asp-route-id="@item.AccessPointId" target="_blank">Print</a>
+            </td>
+        </tr>
+    }
+</table>

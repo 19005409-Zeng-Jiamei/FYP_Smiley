@@ -13,7 +13,7 @@ using FYP_Smiley.Models;
 using Microsoft.EntityFrameworkCore;
 using Rotativa.AspNetCore;
 
-namespace Smiley
+namespace FYP_Smiley
 {
     public class Startup
     {

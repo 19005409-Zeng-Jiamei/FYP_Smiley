@@ -1,0 +1,70 @@
+﻿@model List<SensorData>
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sensor Data</title>
+    <style>
+        .label {
+            font-size: large;
+            font-weight: bold;
+            font-family: Arial;
+        }
+
+        .item {
+            font-size: large;
+            font-family: Arial;
+        }
+
+        .lineitem {
+            height: 1cm;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <table style="border-width:thick;width:100%">
+            <tr>
+                <td style="width:3cm"><img src="~/images/Smiley pink logo .png" style="width:3cm"></td>
+                <td style="width:1cm"></td>
+                <td>
+                    <h1>Sensor Data</h1>
+                    <address>
+                        <p>
+                            <span style="font-size:x-large;font-family:'Bookman Old Style'">Smiley</span><br />
+                        </p>
+                    </address>
+                </td>
+
+            </tr>
+        </table>
+    </header>
+    <hr />
+    <article style="border:solid">
+        <table style="width:100%">
+            <tr>
+                <th>SNO</th>
+                <th>Sensor ID</th>
+                <th>Feedback Gestsure</th>
+                <th>Time Stamp</th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Sno</td>
+                    <td>@item.SensorId</td>
+                    <td>@item.FeedbackGesture</td>
+                    <td>@item.TimeStamp</td>
+                </tr>
+            }
+        </table>
+    </article>
+
+</body>
+</html>  

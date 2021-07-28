@@ -1,0 +1,43 @@
+﻿@model Facility
+
+@{
+    ViewData["Title"] = "New Facility";
+}
+
+@section ScriptSection {
+    <script>
+
+        $(document).ready(function () {
+
+            $("form").submit(function () {
+                if (confirm("Proceed? Press OK to confirm.") == false) {
+                    event.preventDefault();   // not working in IE
+                    event.stopPropagation();  // not working in Firefox
+                    return false;             // working in IE
+                };
+            });
+        });
+
+    </script>
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-sm-6">
+        <form asp-controller="Facility" asp-action="Create" method="post" class="form-horizontal" role="form">
+            <div class="form-horizontal">
+
+                <partial name="_Facility" />
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</div>

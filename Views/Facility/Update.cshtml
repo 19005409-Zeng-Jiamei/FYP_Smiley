@@ -1,0 +1,44 @@
+﻿@model Facility
+
+@{
+    ViewData["Title"] = "Update Facility";
+}
+
+@section ScriptSection {
+    <script>
+
+        $(document).ready(function () {
+            $("form").submit(function () {
+                confirm("Proceed? Press OK to confirm.");
+            });
+        });
+
+    </script>
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-sm-7">
+        <form asp-controller="Facility" asp-action="Update" method="post" class="form-horizontal" role="form">
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <label asp-for="FacilityId" class="col-sm-3 control-label">Facility Id</label>
+                    <div class="col-sm-6">
+                        <input id="txtFI" asp-for="FacilityId" class="form-control" />
+                    </div>
+                </div>
+
+                <partial name="_Facility" />
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                        <input type="submit" value="Update" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

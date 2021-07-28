@@ -1,0 +1,56 @@
+﻿@model Authorisation
+
+@{
+    ViewData["Title"] = "Update Authorisation";
+}
+
+@section ScriptSection {
+    <script>
+
+        $(document).ready(function () {
+            $("form").submit(function () {
+                confirm("Proceed? Press OK to confirm.");
+            });
+        });
+
+    </script>
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-sm-7">
+        <form asp-controller="Authorisation" asp-action="Update" method="post" class="form-horizontal" role="form">
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <label asp-for="AccessPointId" class="col-sm-3 control-label">
+                        Access Point Id
+                    </label>
+                    <div class="col-sm-6">
+                        <input id="txtAcc" asp-for="AccessPointId" class="form-control" readonly="readonly" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UserId" class="col-sm-3 control-label">
+                        User Id
+                    </label>
+                    <div class="col-sm-6">
+                        <input id="txtUser" asp-for="UserId" class="form-control" readonly="readonly" />
+                    </div>
+                </div>
+
+
+                <partial name="_Authorisation" />
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                        <input type="submit" value="Update" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

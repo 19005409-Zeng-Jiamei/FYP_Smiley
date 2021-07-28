@@ -1,0 +1,70 @@
+﻿@model List<AccessPoint>
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Access Point Record</title>
+    <style>
+        .label {
+            font-size: large;
+            font-weight: bold;
+            font-family: Arial;
+        }
+
+        .item {
+            font-size: large;
+            font-family: Arial;
+        }
+
+        .lineitem {
+            height: 1cm;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <table style="border-width:thick;width:100%">
+            <tr>
+                <td style="width:3cm"><img src="~/images/Smiley pink logo .png" style="width:3cm"></td>
+                <td style="width:1cm"></td>
+                <td>
+                    <h1>Access Point Record</h1>
+                    <address>
+                        <p>
+                            <span style="font-size:x-large;font-family:'Bookman Old Style'">Smiley</span><br />
+                        </p>
+                    </address>
+                </td>
+            </tr>
+        </table>
+    </header>
+    <hr />
+
+    <article style="border:solid">
+        <table style="width:100%">
+
+            <tr>
+                <th>Access Point ID</th>
+                <th>Facility ID</th>
+                <th>Description</th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.AccessPointId</td>
+                    <td>@item.FacilityId</td>
+                    <td>@item.Description</td>
+                </tr>
+            }
+
+        </table>
+    </article>
+
+</body>
+</html>  

@@ -1,0 +1,58 @@
+﻿@model Facility
+@{
+    var a = ViewData["pokes"];
+}
+
+<div class="form-group">
+    <label asp-for="AdminId" class="col-sm-3 control-label">Admin Id</label>
+    <div class="col-sm-6">
+        <input id="txtAd" asp-for="AdminId" class="form-control" />
+    </div>
+
+</div>
+
+<div class="form-group">
+    <label asp-for="FacilityName" class="col-sm-3 control-label">
+        Facility Name
+    </label>
+    <div class="col-sm-6">
+        <input id="txtFN" asp-for="FacilityName" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="PostalCode" class="col-sm-3 control-label">
+        Postal Code
+    </label>
+    <div class="col-sm-6">
+        <input id="txtPC" asp-for="PostalCode" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="BlockNumber" class="col-sm-3 control-label">
+        Block Number
+    </label>
+    <div class="col-sm-6">
+        <input id="txtBN" asp-for="BlockNumber" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="StreetName" class="col-sm-3 control-label">
+        Street Name
+    </label>
+    <div class="col-sm-6">
+        <input id="txtSN" asp-for="StreetName" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="BannerPic" class="col-sm-3 control-label">
+        Banner
+    </label>
+    <div class="col-sm-6">
+        <input id="txtBP" asp-for="BannerPic" class="form-control" />
+    </div>
+</div>
+

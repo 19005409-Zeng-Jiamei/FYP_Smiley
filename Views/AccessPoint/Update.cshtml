@@ -1,0 +1,42 @@
+﻿@model AccessPoint
+
+@{
+    ViewData["Title"] = "Update Access Point";
+}
+
+@section ScriptSection {
+    <script>
+
+        $(document).ready(function () {
+            $("form").submit(function () {
+                confirm("Proceed? Press OK to confirm.");
+            });
+        });
+
+    </script>
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-sm-7">
+        <form asp-controller="AccessPoint" asp-action="Update" method="post" class="form-horizontal" role="form">
+            <div class="form-horizontal">
+
+                <label asp-for="AccessPointId" class="col-sm-4 control-label">Access Point Id</label>
+                <div class="col-sm-6">
+                    <input asp-for="AccessPointId" class="form-control" readonly="readonly" />
+                </div>
+
+                <partial name="_AccessPoint" />
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                        <input type="submit" value="Update" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

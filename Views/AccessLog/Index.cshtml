@@ -1,0 +1,33 @@
+﻿@model List<AccessLog>
+
+@{
+    ViewBag.Title = "Access Log";
+}
+
+
+<h2>Access Log</h2>
+
+<span style="color:red">@TempData["Msg"]</span>
+<br />
+
+<a asp-action="Print" target="_blank">Print</a>
+
+<table class="table">
+    <tr>
+        <th>SNO</th>
+        <th>User Id</th>
+        <th>Direction</th>
+        <th>Time Stamp</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Sno</td>
+            <td>@item.UserId</td>
+            <td>@item.Direction</td>
+            <td>@item.TimeStamp</td>
+
+        </tr>
+    }
+</table>

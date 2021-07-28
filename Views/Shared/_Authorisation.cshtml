@@ -1,0 +1,23 @@
+﻿@model Authorisation
+@{
+    var a = ViewData["pokes"];
+}
+
+<div class="form-group">
+    <label asp-for="StartDate" class="col-sm-3 control-label">Start Date</label>
+    <div class="col-sm-6">
+        <input id="txtStart" asp-for="StartDate" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="EndDate" class="col-sm-3 control-label">
+        End Date
+    </label>
+    <div class="col-sm-6">
+        <input id="txtEnd" asp-for="EndDate" class="form-control" />
+    </div>
+</div>
+
+
+
