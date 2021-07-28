@@ -1,0 +1,1 @@
+Scaffold-dbcontext "Data Source= sqlsoidemo.database.windows.net;Initial Catalog=dbsmiley; User ID=c200dbadmin;Password=C200p@ssw0rd;" Microsoft.EntityFrameworkCore.SQLServer   -OutputDir Models -Force -Context AppDbContext
