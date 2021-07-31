@@ -13,24 +13,60 @@
                 </div>
             </div>
         </div>
-    }    <h2 class="form-signin-heading">Please Sign In</h2>
-    <div class="col-sm-5">
-        <div class="form-group">
-            <label asp-for="UserId" class="control-label">User ID :</label>
-            <input asp-for="UserId" class="form-control" placeholder="Your user id" />
-            <div class="has-error">
-                <span asp-validation-for="UserId" class="text-danger"></span>
+    }
+
+    <div class="row h-100 justify-content-center">
+
+        <br />
+        <br />
+        <div class="card col-sm-6 my-sm-auto" style="background-color: antiquewhite;
+        color: black;
+        border-color: antiquewhite;">
+            <div class="card-body">
+                <img src="~/images/Raspberry Pi (Orange v1) .png" style="width:100%" />
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Password" class="control-label">Password :</label>
-            <input asp-for="Password" class="form-control" placeholder="Password" />
-            <div class="has-error">
-                <span asp-validation-for="Password" class="text-danger"></span>
+
+        <div class="col-sm-4 my-sm-auto">
+
+            <div class="card" style=" background-color: antiquewhite;
+                color: black;
+                border-color: antiquewhite;
+                padding-left: 2em;
+                padding-left: 2em;
+                padding-right: 2em;">
+
+                <div class="card-body">
+                    <h2 class="form-signin-heading">Please Sign In</h2>
+                    <br />
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="UserId" class="control-label">User ID :</label>
+                            <input asp-for="UserId" class="form-control" placeholder="Your user id" />
+                            <div class="has-error">
+                                <span asp-validation-for="UserId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label">Password :</label>
+                            <input asp-for="Password" class="form-control" placeholder="Password" />
+                            <div class="has-error">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In" />
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In" />
         </div>
     </div>
 </form>

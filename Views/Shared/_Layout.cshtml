@@ -15,17 +15,43 @@
     <script src="~/lib/jquery/jquery.validate.unobtrusive.min.js"></script>
 
     @RenderSection("ScriptSection", false)
+
+    <style>
+
+        nav {
+            background-color: antiquewhite;
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            height: 100px;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            background-color: antiquewhite;
+            margin: 2px;
+        }
+
+    </style>
+
 </head>
 
 <body>
     <div class="row">
         <div class="col-2">
-            <img src="~/images/Smiley pink logo .png" style="width:100%" />
+            <br />
+            <img src="~/images/smiley orange logo .png" style="width:100%"/>
+            <br />
+            <br />
+
             @if (User.Identity.IsAuthenticated)
             {
                 <h4 class="text-center text-primary">
                     Welcome @User.Identity.Name
                 </h4>
+                <br />
+
                 <h4 class="text-center text-primary">
                     <a asp-controller="SmileyUser" asp-action="Logoff" asp-route-returnUrl="SmileyUser/Login">Logout</a>
                 </h4>
@@ -43,7 +69,7 @@
 
         <div class="col-10">
             <div class="row">
-                <nav class="navbar navbar-expand-lg col-12" style="background-color:aliceblue" role="navigation">
+                <nav class="navbar navbar-expand-lg col-12"  role="navigation">
                     <div>
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
