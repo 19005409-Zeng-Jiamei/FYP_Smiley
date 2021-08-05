@@ -1,0 +1,77 @@
+﻿@model List<SmileyUser>
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Smiley User Record</title>
+    <style>
+        .label {
+            font-size: large;
+            font-weight: bold;
+            font-family: Arial;
+        }
+
+        .item {
+            font-size: large;
+            font-family: Arial;
+        }
+
+        .lineitem {
+            height: 1cm;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <table style="border-width:thick;width:100%">
+            <tr>
+                <td style="width:3cm"><img src="~/images/Smiley pink logo .png" style="width:3cm"></td>
+                <td style="width:1cm"></td>
+                <td>
+                    <h1>Smiley User Record</h1>
+                    <address>
+                        <p>
+                            <span style="font-size:x-large;font-family:'Bookman Old Style'">Smiley</span><br />
+                        </p>
+                    </address>
+                </td>
+            </tr>
+        </table>
+    </header>
+    <hr />
+    <article style="border:solid">
+        <table style="width:100%">
+            <tr>
+                <th>User Id</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Voicefile</th>
+                <th>Picfile</th>
+                <th>Role</th>
+                <th>PhoneNum</th>
+                <th>LastLogin</th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.UserId</td>
+                    <td>@item.FullName</td>
+                    <td>@item.Email</td>
+                    <td>@item.Voicefile</td>
+                    <td>@item.Picfile</td>
+                    <td>@item.Role</td>
+                    <td>@item.PhoneNum</td>
+                    <td>@item.LastLogin</td>
+                </tr>
+            }
+        </table>
+    </article>
+
+</body>
+</html>  

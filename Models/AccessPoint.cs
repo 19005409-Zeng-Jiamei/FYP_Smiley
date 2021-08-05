@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FYP_Smiley.Models
 {
@@ -12,7 +15,11 @@ namespace FYP_Smiley.Models
         }
 
         public int AccessPointId { get; set; }
+
+        [Required(ErrorMessage = "FacilityId is required")]
         public int FacilityId { get; set; }
+
+        [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
         public virtual Facility Facility { get; set; }

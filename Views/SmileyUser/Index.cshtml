@@ -1,7 +1,7 @@
-﻿@model List<Authorisation>
+﻿@model List<SmileyUser>
 
 @{
-    ViewBag.Title = "Authorisation";
+    ViewBag.Title = "Smiley User";
 }
 
 @section ScriptSection {
@@ -16,24 +16,29 @@
 
     </script>
 }
-<h2>Authorisations</h2>
+<h2>Smiley User</h2>
 
 <span style="color:red">@TempData["Msg"]</span>
 <br />
 <p>
     @if (User.IsInRole("Admin"))
     {
-        <a asp-controller="Authorisation" asp-action="Create">Create New</a>
+        <a asp-controller="SmileyUser" asp-action="Create">Create New</a>
     }
 </p>
 
 <a asp-action="Print" target="_blank">Print</a>
 <table class="table">
     <tr>
-        <th>Start</th>
-        <th>End</th>
-        <th>Access Point Id</th>
         <th>User Id</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Voicefile</th>
+        <th>Picfile</th>
+        <th>Role</th>
+        <th>PhoneNum</th>
+        <th>LastLogin</th>
+
         @if (User.IsInRole("Admin"))
         {
             <th>Actions</th>
@@ -44,19 +49,23 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.StartDate</td>
-            <td>@item.EndDate</td>
-            <td>@item.AccessPointId</td>
             <td>@item.UserId</td>
+            <td>@item.FullName</td>
+            <td>@item.Email</td>
+            <td>@item.Voicefile</td>
+            <td>@item.Picfile</td>
+            <td>@item.Role</td>
+            <td>@item.PhoneNum</td>
+            <td>@item.LastLogin</td>
 
              @if (User.IsInRole("Admin"))
              {
-                             <td>
-                <a asp-action="Update" asp-route-id="@item.AccessPointId">Update | </a>
-                <a asp-action="Delete" asp-route-id="@item.AccessPointId" onclick="return ConfirmDelete()">Delete</a>
+            <td>
+                <a asp-action="Update" asp-route-id="@item.UserId">Update | </a>
+                <a asp-action="Delete" asp-route-id="@item.UserId" onclick="return ConfirmDelete()">Delete</a>
             </td>
              }
-
+ 
 
         </tr>
     }

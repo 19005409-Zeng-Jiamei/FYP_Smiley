@@ -10,7 +10,9 @@ using System.Security.Claims;
 using FYP_Smiley.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-
+using Rotativa.AspNetCore;
+using System.Dynamic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 
 namespace FYP_Smiley.Controllers
@@ -40,6 +42,117 @@ namespace FYP_Smiley.Controllers
         public SmileyUserController(AppDbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        [Authorize]
+        public IActionResult Index()
+        {
+            DbSet<SmileyUser> dbs = _dbContext.SmileyUser;
+            List<SmileyUser> model = dbs.ToList();
+
+            return View(model);
+        }
+
+        [Authorize]
+        public IActionResult Create()
+        {
+            DbSet<SmileyUser> dbs = _dbContext.SmileyUser;
+            var lstPokes = dbs.ToList();
+            ViewData["pokes"] = new SelectList(lstPokes, "user_id", "full_Name");
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Create(SmileyUser smileyUser)
+        {
+            if (ModelState.IsValid)
+            {
+                DbSet<SmileyUser> dbs = _dbContext.SmileyUser;
+                dbs.Add(smileyUser);
+
+                if (_dbContext.SaveChanges() == 1)
+                    TempData["Msg"] = "New Smiley User added!";
+                else
+                    TempData["Msg"] = "Failed to update database!";
+            }
+            else
+            {
+                TempData["Msg"] = "Invalid information entered";
+            }
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        public IActionResult Update(string id)
+        {
+            DbSet<SmileyUser> dbs = _dbContext.SmileyUser;
+            SmileyUser tOrder = dbs.Where(mo => mo.UserId == id).FirstOrDefault();
+
+            return View(tOrder);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Update(SmileyUser smileyUser)
+        {
+            if (ModelState.IsValid)
+            {
+                DbSet<SmileyUser> dbs = _dbContext.SmileyUser;
+                SmileyUser tOrder = dbs.Where(mo => mo.UserId == smileyUser.UserId)
+                                     .FirstOrDefault();
+
+                if (tOrder != null)
+                {
+                    tOrder.UserId = smileyUser.UserId;
+                    tOrder.FullName = smileyUser.FullName;
+                    tOrder.Email = smileyUser.Email;
+                    tOrder.Password = smileyUser.Password;
+                    tOrder.Voicefile = smileyUser.Voicefile;
+                    tOrder.Picfile = smileyUser.Picfile;
+                    tOrder.Role = smileyUser.Role;
+                    tOrder.PhoneNum = smileyUser.PhoneNum;
+
+                    if (_dbContext.SaveChanges() == 1)
+                        TempData["Msg"] = "Smiley User updated!";
+                    else
+                        TempData["Msg"] = "Failed to update database!";
+                }
+                else
+                {
+                    TempData["Msg"] = "Smiley User not found!";
+                    return RedirectToAction("Index");
+                }
+            }
+
+            else
+            {
+                TempData["Msg"] = "Invalid information entered";
+            }
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        public IActionResult Delete(string id)
+        {
+            DbSet<SmileyUser> dbs = _dbContext.SmileyUser;
+
+            SmileyUser tOrder = dbs.Where(mo => mo.UserId == id).FirstOrDefault();
+
+            if (tOrder != null)
+            {
+                dbs.Remove(tOrder);
+
+                if (_dbContext.SaveChanges() == 1)
+                    TempData["Msg"] = "Smiley User deleted!";
+                else
+                    TempData["Msg"] = "Failed to update database!";
+            }
+            else
+            {
+                TempData["Msg"] = "Smiley User not found!";
+            }
+            return RedirectToAction("Index");
         }
 
         [AllowAnonymous]
@@ -171,6 +284,26 @@ namespace FYP_Smiley.Controllers
                 return Json(true);
             else
                 return Json(false);
+        }
+
+        [Authorize]
+        public IActionResult Print(int id)
+        {
+            DbSet<SmileyUser> dbs = _dbContext.SmileyUser;
+            List<SmileyUser> model = dbs.ToList();
+
+            if (model != null)
+                return new ViewAsPdf(model)
+                {
+                    PageSize = Rotativa.AspNetCore.Options.Size.B5,
+                    PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape
+                };
+            else
+            {
+                TempData["Msg"] = "Record not found!";
+                return RedirectToAction("Index");
+            }
+
         }
 
     }

@@ -4,11 +4,16 @@
 }
 
 <div class="form-group">
-    
+
 
     <label asp-for="FacilityId" class="col-sm-3 control-label">Facility Id</label>
+
     <div class="col-sm-6">
         <input id="txtFac" asp-for="FacilityId" class="form-control" />
+    </div>
+
+    <div class="col-sm-6">
+        <span asp-validation-for="FacilityId" class="text-danger"></span>
     </div>
 
 </div>
@@ -19,6 +24,9 @@
     </label>
     <div class="col-sm-6">
         <input id="txtDesc" asp-for="Description" class="form-control" />
+    </div>
+    <div class="col-sm-6">
+        <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 </div>
 

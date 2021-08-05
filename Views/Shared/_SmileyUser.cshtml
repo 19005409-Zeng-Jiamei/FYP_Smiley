@@ -1,0 +1,95 @@
+﻿@model SmileyUser
+@{
+    var a = ViewData["pokes"];
+}
+
+<div class="form-group">
+    <label asp-for="UserId" class="col-sm-3 control-label">User Id</label>
+    <div class="col-sm-6">
+        <input id="txtUI" asp-for="UserId" class="form-control" />
+    </div>
+    <div class="col-sm-6">
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="FullName" class="col-sm-3 control-label">Full Name</label>
+    <div class="col-sm-6">
+        <input id="txtFN" asp-for="FullName" class="form-control" />
+    </div>
+    <div class="col-sm-6">
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="Email" class="col-sm-3 control-label">
+        Email
+    </label>
+    <div class="col-sm-6">
+        <input id="txtE" asp-for="Email" class="form-control" />
+    </div>
+    <div class="col-sm-6">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="Password" class="col-sm-3 control-label">
+        Password
+    </label>
+    <div class="col-sm-6">
+        <input id="txtP" asp-for="Password" class="form-control" />
+    </div>
+    <div class="col-sm-6">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="Voicefile" class="col-sm-3 control-label">
+        Voice File
+    </label>
+    <div class="col-sm-6">
+        <input id="txtVF" asp-for="Voicefile" class="form-control" />
+    </div>
+    <div class="col-sm-6">
+        <span asp-validation-for="Voicefile" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="Picfile" class="col-sm-3 control-label">
+        Pic File
+    </label>
+    <div class="col-sm-6">
+        <input id="txtPF" asp-for="Picfile" class="form-control" />
+    </div>
+    <div class="col-sm-6">
+        <span asp-validation-for="Picfile" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="Role" class="col-sm-3 control-label">
+        Role
+    </label>
+    <div class="col-sm-6">
+        <input id="txtR" asp-for="Role" class="form-control" />
+    </div>
+    <div class="col-sm-6">
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="PhoneNum" class="col-sm-3 control-label">
+        Phone Number
+    </label>
+    <div class="col-sm-6">
+        <input id="txtPN" asp-for="PhoneNum" class="form-control" />
+    </div>
+</div>
+
+
