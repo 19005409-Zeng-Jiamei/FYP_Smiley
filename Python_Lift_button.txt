@@ -1,0 +1,43 @@
+﻿import PySimpleGUI as sg
+
+
+sg.theme('BluePurple')  
+
+path = 'C:\\Users\\19005409\\Desktop\\images\\'
+g0 = path + 'lift.png'
+g1 = path + 'liftgif.gif'
+g2 = path + 'liftgif2.gif'
+# g0 = sg.Image(path + 'lift.png')
+# g1 = sg.Image(path + 'liftgif.gif')
+# g2 = sg.Image(path + 'liftgif2.gif')
+
+#gifs1 = [g1]
+#gifs2 = [g2]
+
+layout = [
+            [sg.Image(filename=g0,background_color='white', key='-IMAGE-')],
+            [sg.Button('Open'), sg.Button('Close')]
+         ]
+
+window = sg.Window('Lift Use Case', layout)
+image =  window['-IMAGE-']   
+
+while True:  # Event Loop
+    event, values = window.read(timeout=10)
+    if event == sg.WIN_CLOSED:
+        break
+    if event == 'Open':
+        print("Open")
+        sg.Text('Door Opened',key='smptex')
+        image.update(g2)
+        #for i in range(100000):
+            #image.update_animation(g1, 1000)
+    if event =="Close":
+        print("Close")
+        sg.Text('Door Closed',key='smptex')
+        image.update(g1)
+        #for i in range(100000):
+            #image.update_animation(g2, 1000)
+
+    
+window.close()

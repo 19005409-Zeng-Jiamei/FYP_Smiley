@@ -1,0 +1,18 @@
+﻿import PySimpleGUI as sg
+
+g1 = r'C:\Users\19005409\Desktop\images\liftgif.gif'
+gifs = [g1]
+layout = [[sg.Image(background_color='white', key='-IMAGE-', right_click_menu=['UNUSED', 'Exit'])],[sg.Text('Lift Opening',key='smptex')]]
+
+window = sg.Window('Title',layout, finalize=True)
+image =  window['-IMAGE-']               #type: sg.Image
+while True:
+    event, values = window.read(timeout=100)
+    if event == 'Exit':
+        break
+    image.update_animation(g1, 600)
+    if event == sg.WIN_CLOSED:
+        break
+
+    
+window.close()
