@@ -50,7 +50,7 @@ namespace FYP_Smiley.Controllers
                 dbs.Add(sensor);
 
                 if (_dbContext.SaveChanges() == 1)
-                    TempData["Msg"] = "New access point added!";
+                    TempData["Msg"] = "New Sensor added!";
                 else
                     TempData["Msg"] = "Failed to update database!";
             }
